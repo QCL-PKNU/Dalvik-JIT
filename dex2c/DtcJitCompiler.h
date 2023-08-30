@@ -1,0 +1,59 @@
+/*********************************************************************
+*   DtcJitCompiler.cpp:
+*
+*   Authors:
+*      Youngsun Han (youngsun@kiu.ac.kr)
+*      Minseong Kim (kim1144@naver.com)
+*
+*   Copyright (c) 2014
+*
+*   Compiler & Microarchitecture Laboratory (compiler.korea.ac.kr)
+**********************************************************************/
+
+#ifndef _DTC_JIT_COMPILER_H_
+#define _DTC_JIT_COMPILER_H_
+
+#include "DtcCommon.h"
+#include "DtcCMethod.h"
+#include "DtcDexMethod.h"
+
+///////////////////////////////////////////////////////////////////////
+// DtcJitCompiler Class Declaration
+///////////////////////////////////////////////////////////////////////
+
+class DtcJitCompiler {
+
+private:
+	///////////////////////////////////////////////////////////////////
+	// Member Variable Declaration
+	///////////////////////////////////////////////////////////////////
+
+	DtcCMethod *m_pCMethod;
+
+public :
+	///////////////////////////////////////////////////////////////////
+	// Constructor & Destructor Declaration
+	///////////////////////////////////////////////////////////////////
+
+	DtcJitCompiler();
+	
+	virtual ~DtcJitCompiler();
+
+	///////////////////////////////////////////////////////////////////
+	// Member Function Declaration
+	///////////////////////////////////////////////////////////////////
+	
+	DtcError_t TranslateMethod(Method *pMethod);
+
+	void DumpFile(const char * pFilePath = NULL); 
+
+	///////////////////////////////////////////////////////////////////
+	// Debugging Function Declaration
+	///////////////////////////////////////////////////////////////////
+
+	void Write(ostream &o);
+
+	friend ostream &operator << (ostream &o, DtcJitCompiler *dc);	
+};
+
+#endif
